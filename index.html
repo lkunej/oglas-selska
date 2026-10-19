@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Najam stana — Selska cesta, Zagreb | 60 m² | 800 €/mj</title>
+<style>
+  :root {
+    --ink: #2b2b2b;
+    --muted: #6b6b6b;
+    --line: #e2ddd5;
+    --accent: #8a6d4f;
+    --accent-soft: #f3efe9;
+    --bg: #fbf9f6;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body { margin: 0; padding: 0; }
+
+  body {
+    font-family: "Segoe UI", -apple-system, "Helvetica Neue", Arial, sans-serif;
+    color: var(--ink);
+    background: #eceae6;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 900px;
+    margin: 24px auto;
+    background: var(--bg);
+    box-shadow: 0 6px 30px rgba(0,0,0,.12);
+  }
+
+  /* ---------- Header ---------- */
+  header {
+    padding: 36px 44px 28px;
+    border-bottom: 3px solid var(--accent);
+    background: linear-gradient(180deg, #fff 0%, var(--bg) 100%);
+  }
+
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 12px;
+    color: var(--accent);
+    font-weight: 700;
+    margin: 0 0 8px;
+  }
+
+  h1 {
+    font-size: 30px;
+    margin: 0 0 6px;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .subtitle {
+    color: var(--muted);
+    font-size: 16px;
+    margin: 0;
+  }
+
+  .price-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 10px;
+    margin-top: 18px;
+  }
+
+  .price {
+    font-size: 30px;
+    font-weight: 800;
+    color: var(--accent);
+  }
+
+  .price small {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--muted);
+  }
+
+  .badge {
+    display: inline-block;
+    background: var(--accent-soft);
+    color: var(--accent);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 4px 14px;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  /* ---------- Quick facts ---------- */
+  .facts {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .fact {
+    background: var(--bg);
+    padding: 18px 16px;
+    text-align: center;
+  }
+
+  .fact .big { font-size: 22px; font-weight: 700; }
+  .fact .lbl { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+
+  /* ---------- Sections ---------- */
+  section { padding: 30px 44px; border-bottom: 1px solid var(--line); }
+
+  h2 {
+    font-size: 19px;
+    margin: 0 0 16px;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  h2::before {
+    content: "";
+    width: 22px;
+    height: 2px;
+    background: var(--accent);
+    display: inline-block;
+  }
+
+  p { margin: 0 0 14px; }
+
+  .lead { font-size: 16px; }
+
+  ul.feat {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 24px;
+  }
+  ul.feat li {
+    position: relative;
+    padding-left: 24px;
+    font-size: 15px;
+  }
+  ul.feat li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  /* ---------- Gallery ---------- */
+  .gallery-wide {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  .gallery-tall {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .gallery-wide figure,
+  .gallery-tall figure {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .frame {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 8px;
+    background: #e7e3dd;
+  }
+  /* Wide images: show the full landscape photo */
+  .gallery-wide .frame {
+    aspect-ratio: 4 / 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .gallery-wide img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+  /* Tall images: narrow and tall portrait tiles */
+  .gallery-tall .frame { aspect-ratio: 4 / 5; }
+  .gallery-tall img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  figcaption {
+    font-size: 12.5px;
+    color: var(--muted);
+    margin-top: 6px;
+    text-align: center;
+    font-weight: 500;
+  }
+
+  /* ---------- Location ---------- */
+  .loc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 30px;
+  }
+  .loc-item {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 8px 0;
+    border-bottom: 1px dashed var(--line);
+    font-size: 15px;
+  }
+  .loc-item .dist { color: var(--accent); font-weight: 600; white-space: nowrap; }
+  .loc-note { font-size: 13px; color: var(--muted); margin-top: 14px; }
+
+  /* ---------- Contact ---------- */
+  .contact {
+    background: var(--accent-soft);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+  .contact .cta-title { font-size: 18px; font-weight: 700; margin: 0 0 4px; }
+  .contact .fill { color: var(--muted); font-size: 14px; }
+
+  .btn {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .btn:hover { background: #73573d; }
+
+  footer {
+    padding: 18px 44px;
+    font-size: 12px;
+    color: var(--muted);
+    text-align: center;
+  }
+
+  /* ---------- Print button (screen only) ---------- */
+  .print-bar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--ink);
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+  .print-bar .btn { padding: 8px 18px; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 680px) {
+    .facts { grid-template-columns: 1fr 1fr; }
+    ul.feat, .loc-grid { grid-template-columns: 1fr; }
+    .gallery-wide { grid-template-columns: 1fr; }
+    .gallery-tall { grid-template-columns: 1fr 1fr; }
+    section, header { padding-left: 22px; padding-right: 22px; }
+  }
+
+  /* ---------- Print styles ---------- */
+  @media print {
+    @page { size: A4; margin: 12mm; }
+    body { background: #fff; }
+    .page { box-shadow: none; margin: 0; max-width: 100%; }
+    .print-bar { display: none !important; }
+    header { padding: 0 0 16px; }
+    section { padding: 14px 0; }
+    .contact { background: #fff; border: 1px solid var(--line); border-radius: 6px; padding: 16px; break-inside: avoid; }
+    .btn { display: none; }
+    a[href^="tel"], a[href^="mailto"] { color: var(--ink); text-decoration: none; }
+    h1 { font-size: 24px; }
+    .facts { break-inside: avoid; }
+
+    /* Page 2: keep all 6 photos together on their own page */
+    .gallery-section {
+      break-before: page;
+      break-inside: avoid;
+      padding-top: 0;
+    }
+    .gallery-wide, .gallery-tall { gap: 8px; break-inside: avoid; }
+    .gallery-wide { margin-bottom: 8px; }
+    figure { break-inside: avoid; }
+    figcaption { margin-top: 3px; font-size: 11px; }
+    /* Smaller aspect ratios so everything fits one page */
+    .gallery-wide .frame { aspect-ratio: 16 / 9; }
+    .gallery-tall .frame { aspect-ratio: 1 / 1; }
+
+    /* Page 3: location on its own page */
+    .sec-lokacija { break-before: page; break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- Print bar: visible on screen, hidden on print -->
+  <div class="print-bar">
+    <span>Oglas za najam — spreman za ispis</span>
+    <a href="javascript:window.print()" class="btn">🖨️ Ispiši / Spremi kao PDF</a>
+  </div>
+
+  <header>
+    <p class="eyebrow">Dugoročni najam • Zagreb</p>
+    <h1>Svijetao i uređen stan od 60 m²<br />na Selskoj cesti, Trešnjevka</h1>
+    <p class="subtitle">Potpuno namješten • Spreman za useljenje • Mirna lokacija s odličnom povezanošću</p>
+
+    <div class="price-row">
+      <span class="price">800 € <small>/ mjesečno</small></span>
+      <span class="badge">Dugoročni najam</span>
+      <span class="badge">Namješteno</span>
+    </div>
+  </header>
+
+  <!-- Quick facts -->
+  <div class="facts">
+    <div class="fact"><div class="big">60 m²</div><div class="lbl">Površina</div></div>
+    <div class="fact"><div class="big">2</div><div class="lbl">Spavaće sobe</div></div>
+    <div class="fact"><div class="big">1</div><div class="lbl">Kupaonica</div></div>
+    <div class="fact"><div class="big">✓</div><div class="lbl">Balkon</div></div>
+  </div>
+
+  <!-- Opis -->
+  <section class="sec-opis">
+    <h2>Opis nekretnine</h2>
+    <p class="lead">
+      Iznajmljuje se uredan i svijetao dvosobni stan površine <strong>60 m²</strong> na
+      traženoj lokaciji na <strong>Selskoj cesti</strong> (Trešnjevka). Stan je u potpunosti
+      namješten i opremljen, modernog i toplog uređenja, idealan za par ili manju obitelj
+      koja traži dom na duži rok.
+    </p>
+    <p>
+      Prostor je pametno organiziran: <strong>jedna veća spavaća soba</strong> s bračnim
+      krevetom i ugradbenim ormarom, <strong>jedna manja zasebna soba</strong> pogodna kao
+      dječja soba, radni prostor ili soba za goste, te prostrani <strong>dnevni boravak u
+      otvorenom konceptu</strong> povezan s kuhinjom putem elegantnog <strong>šanka (bara)</strong>.
+      Uz dnevni boravak nalazi se i <strong>veliki balkon</strong> za opuštanje na svježem zraku.
+    </p>
+  </section>
+
+  <!-- Značajke -->
+  <section class="sec-znacajke">
+    <h2>Značajke stana</h2>
+    <ul class="feat">
+      <li>Veća spavaća soba s ugradbenim ormarom</li>
+      <li>Zasebna manja soba (ured / dječja soba)</li>
+      <li>Otvoreni dnevni boravak i kuhinja</li>
+      <li>Šank (bar) između kuhinje i dnevnog boravka</li>
+      <li>Veliki balkon</li>
+      <li>Moderna kupaonica s tušem/kadom</li>
+      <li>Potpuno namješteno i opremljeno</li>
+      <li>Parketni podovi i puno dnevnog svjetla</li>
+    </ul>
+  </section>
+
+  <!-- Uvjeti -->
+  <section class="sec-uvjeti">
+    <h2>Uvjeti najma</h2>
+    <ul class="feat">
+      <li>Cijena: 800 € / mjesečno</li>
+      <li>Režije: prema stvarnoj potrošnji</li>
+      <li>Polog: jedna mjesečna najamnina</li>
+      <li>Minimalno trajanje: dugoročno (12+ mjeseci)</li>
+    </ul>
+  </section>
+
+  <!-- Kontakt -->
+  <section class="contact">
+    <div>
+      <p class="cta-title">Zainteresirani ste za razgledavanje?</p>
+      <p class="fill">Javite se za dogovor termina:&nbsp;
+        <a href="tel:+385">+385 99 260 3769</a> &nbsp;&nbsp;
+      </p>
+    </div>
+  </section>
+
+  <!-- Galerija -->
+  <section class="gallery-section">
+    <h2>Fotografije</h2>
+    <!-- Široke (pejzažne) fotografije -->
+    <div class="gallery-wide">
+      <figure>
+        <div class="frame">
+          <img src="dnevni-boravak.jpeg" alt="Dnevni boravak s blagovaonicom" />
+        </div>
+        <figcaption>Dnevni boravak i blagovaonica</figcaption>
+      </figure>
+      <figure>
+        <div class="frame">
+          <img src="dnevni-i-kuhinja.jpeg" alt="Otvoreni prostor sa šankom prema kuhinji" />
+        </div>
+        <figcaption>Otvoreni prostor sa šankom</figcaption>
+      </figure>
+    </div>
+
+    <!-- Uske (portretne) fotografije -->
+    <div class="gallery-tall">
+      <figure>
+        <div class="frame">
+          <img src="spavaca-soba-krevet.jpeg" alt="Veća spavaća soba s bračnim krevetom" />
+        </div>
+        <figcaption>Veća spavaća soba</figcaption>
+      </figure>
+      <figure>
+        <div class="frame">
+          <img src="spavaca-soba-ormari.jpeg" alt="Ugradbeni ormari u spavaćoj sobi" />
+        </div>
+        <figcaption>Ugradbeni ormari</figcaption>
+      </figure>
+      <figure>
+        <div class="frame">
+          <img src="manja-soba.jpeg" alt="Manja soba — radni prostor" />
+        </div>
+        <figcaption>Manja soba / radni prostor</figcaption>
+      </figure>
+      <figure>
+        <div class="frame">
+          <img src="wc-kupaona.jpeg" alt="Uređena kupaonica s tušem" />
+        </div>
+        <figcaption>Kupaonica</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Lokacija -->
+  <section class="sec-lokacija">
+    <h2>Lokacija i okolica</h2>
+    <p>
+      Stan se nalazi na <strong>Selskoj cesti</strong> u Trešnjevci, jednom od najpovezanijih
+      dijelova Zagreba. Sve za svakodnevni život dostupno je u kratkoj šetnji, a do centra
+      grada stiže se tramvajem u dvadesetak minuta.
+    </p>
+
+    <div class="loc-grid">
+      <div class="loc-item"><span>🚋 Tramvajska stanica „Selska“ (linije 3 i 12)</span><span class="dist">cca 3 min</span></div>
+      <div class="loc-item"><span>🚌 Autobusne stanice ZET-a</span><span class="dist">cca 5 min</span></div>
+      <div class="loc-item"><span>🛒 Konzum / dućan mješovitom robom</span><span class="dist">cca 3 min</span></div>
+      <div class="loc-item"><span>🛒 Lidl / Kaufland (veća kupovina)</span><span class="dist">cca 7 min</span></div>
+      <div class="loc-item"><span>🍎 Trešnjevački plac (tržnica)</span><span class="dist">cca 10 min</span></div>
+      <div class="loc-item"><span>🏫 Osnovna škola</span><span class="dist">cca 7 min</span></div>
+      <div class="loc-item"><span>🧸 Vrtić</span><span class="dist">cca 5 min</span></div>
+      <div class="loc-item"><span>💊 Ljekarna i liječnička ordinacija</span><span class="dist">cca 5 min</span></div>
+      <div class="loc-item"><span>🏙️ Centar grada (Trg bana Jelačića)</span><span class="dist">cca 20 min tramvajem</span></div>
+      <div class="loc-item"><span>☕ Kafići, pekare i restorani</span><span class="dist">u blizini</span></div>
+    </div>
+
+    <p class="loc-note">
+      * Navedene udaljenosti su okvirne i izražene u minutama hoda, osim gdje je naznačeno
+      drugačije. Tramvajska linija 12 vozi izravno do glavnog gradskog trga.
+    </p>
+  </section>
+
+</div>
+
+</body>
+</html>
